@@ -1,0 +1,23 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t sarvang00/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true sarvang00/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t sarvang00/fibocalc-client ./client
+  - docker build -t sarvang00/fibocalc-nginx ./nginx
+  - docker build -t sarvang00/fibocalc-server ./server
+  - docker build -t sarvang00/fibocalc-worker ./worker
+  # Login to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
+  # Take these images and push them to dockerhub
+  - docker push sarvang00/fibocalc-client
+  - docker push sarvang00/fibocalc-nginx
+  - docker push sarvang00/fibocalc-server
+  - docker push sarvang00/fibocalc-worker
+  
