@@ -9,7 +9,7 @@ script:
   - docker run -e CI=true sarvang00/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t sarvang00/fibocalc-client ./client
+  - docker build -t sarvang00/fibocalc-client:v3 ./client
   - docker build -t sarvang00/fibocalc-nginx ./nginx
   - docker build -t sarvang00/fibocalc-server ./server
   - docker build -t sarvang00/fibocalc-worker ./worker
