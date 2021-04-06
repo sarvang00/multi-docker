@@ -10,7 +10,7 @@ function App() {
     <Router>
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Fibo Calculator</h1>
+          <h1 className="App-title">Fibo Calculator v.2</h1>
           <img src={logo} className="App-logo" alt="logo" />
           <a
             className="App-link"
