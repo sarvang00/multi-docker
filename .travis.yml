@@ -21,14 +21,14 @@ after_success:
   - docker push sarvang00/fibocalc-server
   - docker push sarvang00/fibocalc-worker
 
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "ap-south-1"
-#   app: "multi-docker-fibo-calc"
-#   env: "Multidockerfibocalc-env"
-#   bucket_name: "elasticbeanstalk-ap-south-1-585360292342"
-#   bucket_path: "multi-docker-fibo-calc"
-#   on:
-#     branch: master
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret_access_key: $AWS_SECRET_KEY
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-south-1"
+  app: "multi-docker-fibo-calc"
+  env: "Multidockerfibocalc-env"
+  bucket_name: "elasticbeanstalk-ap-south-1-585360292342"
+  bucket_path: "multi-docker-fibo-calc"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
